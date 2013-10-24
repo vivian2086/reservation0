@@ -232,19 +232,18 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //不要该函数的位置，它必须在最后，用于bash处理。bash处理过程是先计算出这行，然后出书这行之前的所有内容，
-         //接着后读入一个文件填充该函数，最后输出一行 "}\< /SCRIPT></html>" 结束
+        //不要更改函数的位置，它必须在最后，用于bash处理。bash处理过程是先计算出这行，然后输出这行之前的所有内容，
+         //接着读入一个文件填充该函数，最后输出一行 "}\< /SCRIPT></html>" 结束
         function write_file(){
-OpenWindow.document.write( "/* 一下内容需要保持在50行一下，用于bash处理 */\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "/*\n" );
+OpenWindow.document.write( " var lastName_g             = '黄';\n" );
+OpenWindow.document.write( " var firstName_g            = '荣杰';\n" );
+OpenWindow.document.write( " var emailAddress_g         = 'vivian2086@gmail.com'; \n" );
+OpenWindow.document.write( " var phoneNumber_g          = '85263531851';\n" );
+OpenWindow.document.write( " var governmentID_g         = 'TODO';\n" );
+OpenWindow.document.write( " */\n" );
+OpenWindow.document.write( "\n" );
 OpenWindow.document.write( "\n" );
 OpenWindow.document.write( "var selectedStore_g         = null;\n" );
 OpenWindow.document.write( "var storeName_g             = null;\n" );
@@ -253,7 +252,7 @@ OpenWindow.document.write( "var skuName_g               = null;\n" );
 OpenWindow.document.write( "var timeslotid_g            = null;\n" );
 OpenWindow.document.write( "var timeSlotStartTime_g     = null;         //jQuery('#hiddenTimeSlot').val().split(',')[2];\n" );
 OpenWindow.document.write( "var pickUpSlot_g            = null;         //jQuery('.step-seven .selection').html()\n" );
-OpenWindow.document.write( "var plan_g                  = \"UNLOCKED\";   //jQuery('.carrier-row').find(' input ').val();     TODO\n" );
+OpenWindow.document.write( "var plan_g                  = \"UNLOCKED\";   //jQuery('.carrier-row').find(' input ').val();     \n" );
 OpenWindow.document.write( "var selectedSubProduct_g    = 'iPhone 5s';\n" );
 OpenWindow.document.write( "var pickupMode_g            = 'POST_LAUNCH';\n" );
 OpenWindow.document.write( "\n" );
@@ -285,7 +284,7 @@ OpenWindow.document.write( "                            timeSlotStartTime_g = va
 OpenWindow.document.write( "                            timeslotid_g = val.timeslotID;\n" );
 OpenWindow.document.write( "                            pickUpSlot_g = val.formattedTimeForDisplay;\n" );
 OpenWindow.document.write( "                            \n" );
-OpenWindow.document.write( "                            console.log( \"      getTimeSlots success. \" + pickUpSlot_g + \": \" + timeslotid_g + ', ' + timeSlotStartTime_g );\n" );
+OpenWindow.document.write( "                            console.log( \"      getTimeSlots success. \" + pickUpSlot_g + \": \" + timeslotid_g + ', ' + timeSlotStartTime_g + ', available:' + val.reservationAvailable );\n" );
 OpenWindow.document.write( "                            return false;\n" );
 OpenWindow.document.write( "                            } \n" );
 OpenWindow.document.write( "                            });\n" );
@@ -386,7 +385,7 @@ OpenWindow.document.write( "                jQuery.each(sTitle1Data, function(ca
 OpenWindow.document.write( "                    if( carrier.toLowerCase() == 'unlocked' ){\n" );
 OpenWindow.document.write( "                        jQuery.each(carrierData, function(capacity,capacityData) {\n" );
 OpenWindow.document.write( "                            jQuery.each(capacityData, function(index,skuData) {\n" );
-OpenWindow.document.write( "                                if (index === 0) {\n" );
+OpenWindow.document.write( "				if (index === 0) {\n" );
 OpenWindow.document.write( "                                    if( skuData.partNumber == partNum ){\n" );
 OpenWindow.document.write( "                                        if( skuData.enabled ){\n" );
 OpenWindow.document.write( "                                            console.log( '    found ' + partNum + ', ' + skuData.localizedAttributes.S_SKU_NAME );\n" );
@@ -426,10 +425,6 @@ OpenWindow.document.write( "        success: function(data) {\n" );
 OpenWindow.document.write( "            if (data != null) {	\n" );
 OpenWindow.document.write( "                if (data.productResponse !== undefined) {\n" );
 OpenWindow.document.write( "                    sku = data.productResponse.productGroupedSku;\n" );
-OpenWindow.document.write( "                    //                van_check_available( sku, 'ME457CH/A' );\n" );
-OpenWindow.document.write( "                    //                van_check_available( sku, 'MF382CH/A' );\n" );
-OpenWindow.document.write( "                    //                van_check_available( sku, 'MF381CH/A' );\n" );
-OpenWindow.document.write( "                    \n" );
 OpenWindow.document.write( "                    console.log('POST(sku) success: ' + storeNumber );\n" );
 OpenWindow.document.write( "                } else {\n" );
 OpenWindow.document.write( "    		    console.log('POST(sku) No data:' + storeNumber );\n" );
@@ -447,25 +442,25 @@ OpenWindow.document.write( "    return sku;\n" );
 OpenWindow.document.write( "};\n" );
 OpenWindow.document.write( "\n" );
 OpenWindow.document.write( "\n" );
-OpenWindow.document.write( "function van_gettime_submit(){\n" );
+OpenWindow.document.write( "// function van_gettime_submit(){\n" );
 OpenWindow.document.write( "    \n" );
-OpenWindow.document.write( "    var i = 0;\n" );
+OpenWindow.document.write( "//     var i = 0;\n" );
 OpenWindow.document.write( "    \n" );
-OpenWindow.document.write( "    van_getTimeslots();\n" );
+OpenWindow.document.write( "//     van_getTimeslots();\n" );
 OpenWindow.document.write( "    \n" );
-OpenWindow.document.write( "    (function doit() {\n" );
-OpenWindow.document.write( "     setTimeout(function() {\n" );
-OpenWindow.document.write( "                if( timeslotid_g != null ){\n" );
-OpenWindow.document.write( "                van_onSubmitRequest();\n" );
-OpenWindow.document.write( "                }\n" );
-OpenWindow.document.write( "                if( i++ < 30 && timeslotid_g == null ) {\n" );
-OpenWindow.document.write( "                console.log( i );\n" );
-OpenWindow.document.write( "                van_getTimeslots();\n" );
-OpenWindow.document.write( "                doit();\n" );
-OpenWindow.document.write( "                }\n" );
-OpenWindow.document.write( "                }, 200 );\n" );
-OpenWindow.document.write( "     })();\n" );
-OpenWindow.document.write( "}\n" );
+OpenWindow.document.write( "//     (function doit() {\n" );
+OpenWindow.document.write( "//      setTimeout(function() {\n" );
+OpenWindow.document.write( "//                 if( timeslotid_g != null ){\n" );
+OpenWindow.document.write( "//                 van_onSubmitRequest();\n" );
+OpenWindow.document.write( "//                 }\n" );
+OpenWindow.document.write( "//                 if( i++ < 30 && timeslotid_g == null ) {\n" );
+OpenWindow.document.write( "//                 console.log( i );\n" );
+OpenWindow.document.write( "//                 van_getTimeslots();\n" );
+OpenWindow.document.write( "//                 doit();\n" );
+OpenWindow.document.write( "//                 }\n" );
+OpenWindow.document.write( "//                 }, 200 );\n" );
+OpenWindow.document.write( "//      })();\n" );
+OpenWindow.document.write( "// }\n" );
 OpenWindow.document.write( "\n" );
 OpenWindow.document.write( "\n" );
 OpenWindow.document.write( "\n" );
@@ -473,6 +468,7 @@ OpenWindow.document.write( "function van_get_iphone()\n" );
 OpenWindow.document.write( "{\n" );
 OpenWindow.document.write( "    \n" );
 OpenWindow.document.write( "    var i = 0;\n" );
+OpenWindow.document.write( "    var k = 0;\n" );
 OpenWindow.document.write( "    var sku     		= null;\n" );
 OpenWindow.document.write( "    var stores	    = null;\n" );
 OpenWindow.document.write( "    var stores_all = [ \n" );
@@ -549,21 +545,26 @@ OpenWindow.document.write( "        console.log( '手机型号错误: ' + color_
 OpenWindow.document.write( "        return;\n" );
 OpenWindow.document.write( "    }\n" );
 OpenWindow.document.write( "    \n" );
-OpenWindow.document.write( "    for( i=0; i<stores.length; i++ ){\n" );
-OpenWindow.document.write( "        console.log( \"got cha0: \" + partNumber_g + ' : ' + skuName_g + ' : ' + stores[i].name );\n" );
-OpenWindow.document.write( "        \n" );
-OpenWindow.document.write( "        sku = van_getsku( stores[i].num );\n" );
-OpenWindow.document.write( "        if( sku != null ){\n" );
-OpenWindow.document.write( "            if( van_check_available( sku, partNumber_g ) == true ){                \n" );
-OpenWindow.document.write( "                selectedStore_g         = stores[i].num;\n" );
-OpenWindow.document.write( "                storeName_g             = stores[i].name;\n" );
-OpenWindow.document.write( "                \n" );
-OpenWindow.document.write( "                //获取timeslot，然后提交\n" );
-OpenWindow.document.write( "                van_gettime_submit();\n" );
-OpenWindow.document.write( "                return;\n" );
+OpenWindow.document.write( "    //尝试一百次\n" );
+OpenWindow.document.write( "    for( k=0; k<100; k++ ){\n" );
+OpenWindow.document.write( "	for( i=0; i<stores.length; i++ ){\n" );
+OpenWindow.document.write( "            console.log( skuName_g + ' : ' + stores[i].name );\n" );
+OpenWindow.document.write( "            sku = van_getsku( stores[i].num );\n" );
+OpenWindow.document.write( "            if( sku != null ){\n" );
+OpenWindow.document.write( "		if( van_check_available( sku, partNumber_g ) == true ){                \n" );
+OpenWindow.document.write( "                    selectedStore_g         = stores[i].num;\n" );
+OpenWindow.document.write( "                    storeName_g             = stores[i].name;\n" );
+OpenWindow.document.write( "                    \n" );
+OpenWindow.document.write( "                    //获取timeslot，然后提交\n" );
+OpenWindow.document.write( "                    if( van_getTimeslots() == true ){\n" );
+OpenWindow.document.write( "			van_onSubmitRequest();\n" );
+OpenWindow.document.write( "			return;\n" );
+OpenWindow.document.write( "		    }\n" );
+OpenWindow.document.write( "		}\n" );
 OpenWindow.document.write( "            }\n" );
-OpenWindow.document.write( "        }\n" );
+OpenWindow.document.write( "	}\n" );
 OpenWindow.document.write( "    }\n" );
+OpenWindow.document.write( "    \n" );
 OpenWindow.document.write( "    \n" );
 OpenWindow.document.write( "    if( sku != null )\n" );
 OpenWindow.document.write( "        console.log( \"预约失败: 该型号在该城市的所有直营店都没货.\" );\n" );

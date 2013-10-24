@@ -10,10 +10,10 @@ if [ ! "$#" -eq 2 ]; then
 fi
 
 
-sed -n '50,100000p' "$1" > dump1
+#sed -n '50,100000p' "$1" > dump1
 
 
-cat dump1 | sed 's/"/\\"/g' >dump2
+cat "$1" | sed 's/"/\\"/g' >dump2
 #cat dump | awk  '{print "OpenWindow.document.write( \"" $0 "<br>\" );" }'>dump1
 cat dump2 | awk  '{print "OpenWindow.document.write( \"" $0 "\\n\" );" }'>dump3
 

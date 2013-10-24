@@ -8,47 +8,6 @@
  */
 
 
-var lastName_g              = "飞";                      //姓
-var firstName_g             = "辽";                      //名
-var emailAddress_g          = "8208354@qq.com";         //邮箱
-var phoneNumber_g           = "85263531851";            //手机号
-var governmentID_g          = "420288199307081111";     //身份证号
-
-
-var color_g                 = "银";      //颜色.    可选值:  金, 银, 灰
-var capacity_g              = 16;       //容量.    可选值:  16, 32, 64
-var carrier_g               = "电信";     //运营商.   可选值: 香港, 联通, 电信. (大陆行填联通或电信, 港行填香港。都是无合约无锁版)
-var pickup_city_g           = "北京";     //取机城市. 可选值:  香港, 北京, 上海, 深圳, 成都
-var startime_g              = 1;       //取机时间(开始点). 下午的时间，例如, 4既是"4:00 下午 - x:00 下午"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 一下内容需要保持在50行一下，用于bash处理 */
-
 var selectedStore_g         = null;
 var storeName_g             = null;
 var partNumber_g            = null;
@@ -56,7 +15,7 @@ var skuName_g               = null;
 var timeslotid_g            = null;
 var timeSlotStartTime_g     = null;         //jQuery('#hiddenTimeSlot').val().split(',')[2];
 var pickUpSlot_g            = null;         //jQuery('.step-seven .selection').html()
-var plan_g                  = "UNLOCKED";   //jQuery('.carrier-row').find(' input ').val();     TODO
+var plan_g                  = "UNLOCKED";   //jQuery('.carrier-row').find(' input ').val();     
 var selectedSubProduct_g    = 'iPhone 5s';
 var pickupMode_g            = 'POST_LAUNCH';
 
@@ -88,7 +47,7 @@ function van_getTimeslots() {
                             timeslotid_g = val.timeslotID;
                             pickUpSlot_g = val.formattedTimeForDisplay;
                             
-                            console.log( "      getTimeSlots success. " + pickUpSlot_g + ": " + timeslotid_g + ', ' + timeSlotStartTime_g + ', ' + val.reservationAvailable );
+                            console.log( "      getTimeSlots success. " + pickUpSlot_g + ": " + timeslotid_g + ', ' + timeSlotStartTime_g + ', available:' + val.reservationAvailable );
                             return false;
                             } 
                             });
@@ -189,7 +148,7 @@ function van_check_available( sku, partNum ) {
                     if( carrier.toLowerCase() == 'unlocked' ){
                         jQuery.each(carrierData, function(capacity,capacityData) {
                             jQuery.each(capacityData, function(index,skuData) {
-                                if (index === 0) {
+				if (index === 0) {
                                     if( skuData.partNumber == partNum ){
                                         if( skuData.enabled ){
                                             console.log( '    found ' + partNum + ', ' + skuData.localizedAttributes.S_SKU_NAME );
@@ -229,10 +188,6 @@ function van_getsku( storeNumber ) {
             if (data != null) {	
                 if (data.productResponse !== undefined) {
                     sku = data.productResponse.productGroupedSku;
-                    //                van_check_available( sku, 'ME457CH/A' );
-                    //                van_check_available( sku, 'MF382CH/A' );
-                    //                van_check_available( sku, 'MF381CH/A' );
-                    
                     console.log('POST(sku) success: ' + storeNumber );
                 } else {
     		    console.log('POST(sku) No data:' + storeNumber );
@@ -250,25 +205,25 @@ function van_getsku( storeNumber ) {
 };
 
 
-function van_gettime_submit(){
+// function van_gettime_submit(){
     
-    var i = 0;
+//     var i = 0;
     
-    van_getTimeslots();
+//     van_getTimeslots();
     
-    (function doit() {
-     setTimeout(function() {
-                if( timeslotid_g != null ){
-                van_onSubmitRequest();
-                }
-                if( i++ < 30 && timeslotid_g == null ) {
-                console.log( i );
-                van_getTimeslots();
-                doit();
-                }
-                }, 200 );
-     })();
-}
+//     (function doit() {
+//      setTimeout(function() {
+//                 if( timeslotid_g != null ){
+//                 van_onSubmitRequest();
+//                 }
+//                 if( i++ < 30 && timeslotid_g == null ) {
+//                 console.log( i );
+//                 van_getTimeslots();
+//                 doit();
+//                 }
+//                 }, 200 );
+//      })();
+// }
 
 
 
@@ -276,6 +231,7 @@ function van_get_iphone()
 {
     
     var i = 0;
+    var k = 0;
     var sku     		= null;
     var stores	    = null;
     var stores_all = [ 
@@ -352,21 +308,26 @@ function van_get_iphone()
         return;
     }
     
-    for( i=0; i<stores.length; i++ ){
-        console.log( "got cha0: " + partNumber_g + ' : ' + skuName_g + ' : ' + stores[i].name );
-        
-        sku = van_getsku( stores[i].num );
-        if( sku != null ){
-            if( van_check_available( sku, partNumber_g ) == true ){                
-                selectedStore_g         = stores[i].num;
-                storeName_g             = stores[i].name;
-                
-                //获取timeslot，然后提交
-                van_gettime_submit();
-                return;
+    //尝试一百次
+    for( k=0; k<100; k++ ){
+	for( i=0; i<stores.length; i++ ){
+            console.log( skuName_g + ' : ' + stores[i].name );
+            sku = van_getsku( stores[i].num );
+            if( sku != null ){
+		if( van_check_available( sku, partNumber_g ) == true ){                
+                    selectedStore_g         = stores[i].num;
+                    storeName_g             = stores[i].name;
+                    
+                    //获取timeslot，然后提交
+                    if( van_getTimeslots() == true ){
+			van_onSubmitRequest();
+			return;
+		    }
+		}
             }
-        }
+	}
     }
+    
     
     if( sku != null )
         console.log( "预约失败: 该型号在该城市的所有直营店都没货." );
