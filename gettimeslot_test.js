@@ -1,63 +1,50 @@
 
-var color_g = '金';
-var capacity_g = '16';
-var carrier_g = '香港';
 var pickup_city_g = '香港';
-var startime_g = 8;
-
-
 
 
 var selectedStore_g         = null;
 var storeName_g             = null;
-var partNumber_g            = null;
-var skuName_g               = null;
-var timeslotid_g            = null;
-var timeSlotStartTime_g     = null;         //jQuery('#hiddenTimeSlot').val().split(',')[2];
-var pickUpSlot_g            = null;         //jQuery('.step-seven .selection').html()
 var plan_g                  = "UNLOCKED";   //jQuery('.carrier-row').find(' input ').val();     
 var selectedSubProduct_g    = 'iPhone 5s';
 var pickupMode_g            = 'POST_LAUNCH';
 
+//
+//var startime_g = 3;
+//currtime = (new Date).getTime();
+//startday = currtime - currtime % 43200000;
+//starthour = startday + startime_g * 3600000;
+//console.log( startday + ", " + startHour );
+//
+
+
+
 function van_getTimeslots() {
     var timeslots = [];
-    var startime_tmp = null;
-	var dataString = 'productName=' + selectedSubProduct_g + '&storeNumber=' + selectedStore_g +'&plan='+ plan_g + '&mode=' + pickupMode_g;
-    var i = 0;
-    
+
+    var dataString = 'productName=' + selectedSubProduct_g + '&storeNumber=' + selectedStore_g +'&plan='+ plan_g + '&mode=' + pickupMode_g;
+
     jQuery.ajax({
-                type: "POST",
-                async: false,
-                url: "getTimeSlots",
-                dataType : "json",
-                data: dataString,
-                success: function(data) {
-                if (data.timeSlots != null) {
+        type: "POST",
+        async: false,
+        url: "getTimeSlots",
+        dataType : "json",
+        data: dataString,
+        success: function(data) {
+            if (data.timeSlots != null) {
                 
                 console.log( "POST(gettimeslots) success1" );
                 timeslots = data.timeSlots;	
-                for( i = startime_g; i < 12; i++ ){
-                startime_tmp = i + ':00 下午';
-                
                 jQuery.each(timeslots, function(index, val) {
-                            console.log( val.formattedTimeForDisplay + ": " + val.timeslotID + ', ' + val.timeslotDate+ ', ' + val.startTime );
-                            //console.log( val );
-                            if( val.formattedTimeForDisplay.split(' - ')[0] == startime_tmp ){
-                            return false;
-                            }
-                            });
-                
-                }//for
-                }//if
-                console.log( "POST(gettimeslots) success2" );
-                },
-                error: function () {
-                console.log( "POST(getTimeSlots) error" );
-                } 		
-                
-                
+                    console.log( val.formattedTimeForDisplay + ": " + val.timeslotID + ', ' + val.timeslotDate+ ', ' + val.startTime );
+                    //console.log( val );
                 });
-
+            }//if
+            console.log( "POST(gettimeslots) success2" );
+        },
+        error: function () {
+            console.log( "POST(getTimeSlots) error" );
+        } 		
+    });
 }
 
 
@@ -70,8 +57,6 @@ function van_get_timeslot()
 {
     
     var i = 0;
-    var k = 0;
-    var sku     		= null;
     var stores	    = null;
     var stores_all = [ 
         { "city":"香港", "store":[ {"num":"R428", "name":"香港, ifc mall"}, {"num":"R485", "name":"香港, Festival Walk"}, {"num":"R409", "name":"香港, Causeway Bay"} ]},
@@ -126,17 +111,21 @@ function van_get_timeslot()
     }
     
 
-	for( i=0; i<stores.length; i++ ){
-            console.log( stores[i].name );
-            selectedStore_g         = stores[i].num;
-            storeName_g             = stores[i].name;
-            van_getTimeslots();
-			return;
 
-	}
+    for( i=0; i<stores.length; i++ ){
+        console.log( stores[i].name );
+        selectedStore_g         = stores[i].num;
+        storeName_g             = stores[i].name;
+        van_getTimeslots();
+    }
 }
 
 van_get_timeslot();
+
+
+
+
+
 
 
 
