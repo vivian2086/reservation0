@@ -1,7 +1,6 @@
 
-
 //TODO
-var startime_g              = 3;            //取机时间，下午的时间，例如, 4既是"4:00 下午 - x:00 下午"
+var startime_g              = 4;            //取机时间，下午的时间，例如, 4既是"4:00 下午 - x:00 下午"
 
 
 /*
@@ -30,9 +29,8 @@ var plan_g                  = "UNLOCKED";
 var timeslotid_g            = null;
 var timeSlotStartTime_g     = null;
 var pickUpSlot_g            = null;
-var skus_count_g	    = 0;
 var selectedSubProduct_g    = 'iPhone 5s';
-var pickupMode_g            ='POST_LAUNCH';
+var pickupMode_g            = 'POST_LAUNCH';
 
 
 
@@ -137,14 +135,9 @@ function van_onSubmitRequest() {
 	
 }
 
+
 van_getTimeslots();
+//TODO
 //van_onSubmitRequest();
-
-
-
-
-
-
-
 
 

@@ -1,23 +1,14 @@
 
-var color_g = '金';
-var capacity_g = '16';
-var carrier_g = '香港';
 var pickup_city_g = '香港';
-var startime_g = 8;
-
 
 
 
 var selectedStore_g         = null;
 var storeName_g             = null;
-var partNumber_g            = null;
-var skuName_g               = null;
-var timeslotid_g            = null;
-var timeSlotStartTime_g     = null;         //jQuery('#hiddenTimeSlot').val().split(',')[2];
-var pickUpSlot_g            = null;         //jQuery('.step-seven .selection').html()
 var plan_g                  = "UNLOCKED";   //jQuery('.carrier-row').find(' input ').val();     
 var selectedSubProduct_g    = 'iPhone 5s';
 var pickupMode_g            = 'POST_LAUNCH';
+
 
 function van_getTimeslots() {
     var timeslots = [];
@@ -57,8 +48,6 @@ function van_get_timeslot()
 {
     
     var i = 0;
-    var k = 0;
-    var sku     		= null;
     var stores	    = null;
     var stores_all = [ 
         { "city":"香港", "store":[ {"num":"R428", "name":"香港, ifc mall"}, {"num":"R485", "name":"香港, Festival Walk"}, {"num":"R409", "name":"香港, Causeway Bay"} ]},

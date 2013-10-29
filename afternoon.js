@@ -1,8 +1,8 @@
 
 //TODO
-var timeslotid_g            = '656934';                //val.timeslotID
-var timeSlotStartTime_g     = '1383069600000';         //val.startTime
-var pickUpSlot_g            = '6:00 下午 - 7:00 下午';  //val.formattedTimeForDisplay
+var timeslotid_g            = '656935';                //val.timeslotID.    oct-29, ifc
+var timeSlotStartTime_g     = '1383073200000';         //val.startTime
+var pickUpSlot_g            = '7:00 下午 - 8:00 下午';  //val.formattedTimeForDisplay
 
 
 
@@ -19,18 +19,14 @@ var governmentID_g          = '420288199307081222';
 // var lastName_g             = '黄';
 // var emailAddress_g         = 'vivian2086@gmail.com'; 
 // var phoneNumber_g          = '85263531851';
-// var governmentID_g         = 'TODO';
-
-
-
+// var governmentID_g         = '450881198703101839';
 var selectedStore_g         = 'R428';
 var storeName_g             = '香港, ifc mall';
 var partNumber_g            = 'MF354ZP/A';                                                         
 var skuName_g               = 'iPhone 5s 16GB 金色';
 var plan_g                  = "UNLOCKED";   //jQuery('.carrier-row').find(' input ').val();     
-var skus_count_g	    = 0;
 var selectedSubProduct_g    = 'iPhone 5s';
-var pickupMode_g            ='POST_LAUNCH';
+var pickupMode_g            = 'POST_LAUNCH';
 
 
 
@@ -88,7 +84,7 @@ function van_onSubmitRequest() {
 	
 }
 
-
+//TODO
 //van_onSubmitRequest();
 
 
