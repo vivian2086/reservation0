@@ -2,6 +2,7 @@
 var pickup_city_g = '香港';
 
 
+
 var selectedStore_g         = null;
 var storeName_g             = null;
 var plan_g                  = "UNLOCKED";   //jQuery('.carrier-row').find(' input ').val();     
