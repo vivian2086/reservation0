@@ -8,7 +8,7 @@ var pickUpSlot_g            = '7:00 下午 - 8:00 下午';  //val.formattedTimeF
 
 var firstName_g             = '辽';
 var lastName_g              = '云';
-var emailAddress_g          = '8208354@qq.com'; 
+var emailAddress_g          = 'vivian2086@gmail.com'; 
 var phoneNumber_g           = '85263531851';
 var governmentID_g          = '420288199307081222';
 
@@ -85,7 +85,7 @@ function van_onSubmitRequest() {
 }
 
 //TODO
-//van_onSubmitRequest();
+van_onSubmitRequest();
 
 
 
