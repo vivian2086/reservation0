@@ -21,43 +21,30 @@ var pickupMode_g            = 'POST_LAUNCH';
 
 function van_getTimeslots() {
     var timeslots = [];
-    var startime_tmp = null;
-	var dataString = 'productName=' + selectedSubProduct_g + '&storeNumber=' + selectedStore_g +'&plan='+ plan_g + '&mode=' + pickupMode_g;
-    var i = 0;
-    
+    var dataString = 'productName=' + selectedSubProduct_g + '&storeNumber=' + selectedStore_g +'&plan='+ plan_g + '&mode=' + pickupMode_g;
+
     jQuery.ajax({
-                type: "POST",
-                async: false,
-                url: "getTimeSlots",
-                dataType : "json",
-                data: dataString,
-                success: function(data) {
-                if (data.timeSlots != null) {
+        type: "POST",
+        async: false,
+        url: "getTimeSlots",
+        dataType : "json",
+        data: dataString,
+        success: function(data) {
+            if (data.timeSlots != null) {
                 
                 console.log( "POST(gettimeslots) success1" );
                 timeslots = data.timeSlots;	
-                for( i = startime_g; i < 12; i++ ){
-                startime_tmp = i + ':00 下午';
-                
                 jQuery.each(timeslots, function(index, val) {
-                            console.log( val.formattedTimeForDisplay + ": " + val.timeslotID + ', ' + val.timeslotDate+ ', ' + val.startTime );
-                            //console.log( val );
-                            if( val.formattedTimeForDisplay.split(' - ')[0] == startime_tmp ){
-                            return false;
-                            }
-                            });
-                
-                }//for
-                }//if
-                console.log( "POST(gettimeslots) success2" );
-                },
-                error: function () {
-                console.log( "POST(getTimeSlots) error" );
-                } 		
-                
-                
+                    console.log( val.formattedTimeForDisplay + ": " + val.timeslotID + ', ' + val.timeslotDate+ ', ' + val.startTime );
+                    //console.log( val );
                 });
-
+            }//if
+            console.log( "POST(gettimeslots) success2" );
+        },
+        error: function () {
+            console.log( "POST(getTimeSlots) error" );
+        } 		
+    });
 }
 
 
@@ -126,14 +113,12 @@ function van_get_timeslot()
     }
     
 
-	for( i=0; i<stores.length; i++ ){
-            console.log( stores[i].name );
-            selectedStore_g         = stores[i].num;
-            storeName_g             = stores[i].name;
-            van_getTimeslots();
-			return;
-
-	}
+    for( i=0; i<stores.length; i++ ){
+        console.log( stores[i].name );
+        selectedStore_g         = stores[i].num;
+        storeName_g             = stores[i].name;
+        van_getTimeslots();
+    }
 }
 
 van_get_timeslot();
