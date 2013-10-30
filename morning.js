@@ -138,6 +138,6 @@ function van_onSubmitRequest() {
 
 van_getTimeslots();
 //TODO
-//van_onSubmitRequest();
+van_onSubmitRequest();
 
 

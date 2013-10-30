@@ -1,11 +1,4 @@
 
-/*
- var lastName_g             = '黄';
- var firstName_g            = '荣杰';
- var emailAddress_g         = 'vivian2086@gmail.com'; 
- var phoneNumber_g          = '85263531851';
- var governmentID_g         = 'TODO';
- */
 
 
 var selectedStore_g         = null;
@@ -308,8 +301,8 @@ function van_get_iphone()
         return;
     }
     
-    //尝试一百次
-    for( k=0; k<100; k++ ){
+    //尝试2次
+    for( k=0; k<2; k++ ){
 	for( i=0; i<stores.length; i++ ){
             console.log( skuName_g + ' : ' + stores[i].name );
             sku = van_getsku( stores[i].num );

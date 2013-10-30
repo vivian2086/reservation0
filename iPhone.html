@@ -3,9 +3,8 @@
         <TITLE>请填完该表，生成iphone预约代码</TITLE>
         　　</head>
     　　<body>
-        
-        
-        
+
+
         <div align="center">
             
             <form>
@@ -75,6 +74,21 @@
                                                                 <br>
                                                                 　　<input type="button" onclick="openwin()" value="生成iphone预定脚本">
                                                                     </div>
+        <table><tbody>
+            <tr><td>
+                
+                <a href="https://ireservea.apple.com/HK/zh_HK/reserve/iPhone" target="_blank">香港5s预约</a>
+            </td></tr>
+            <tr><td>
+                <a href="https://ireservea.apple.com/CN/zh_CN/reserve/iPhone" target="_blank">大陆5s预约</a>
+            </td></tr>
+            <tr><td>
+                <a href="http://wwp.greenwichmeantime.com/time-zone/asia/china/" target="_blank">北京时间(参考)</a>
+            </td></tr>
+        </tbody></table>
+        
+
+
         
         　　</body>
     
@@ -236,13 +250,6 @@
          //接着读入一个文件填充该函数，最后输出一行 "}\< /SCRIPT></html>" 结束
         function write_file(){
 OpenWindow.document.write( "\n" );
-OpenWindow.document.write( "/*\n" );
-OpenWindow.document.write( " var lastName_g             = '黄';\n" );
-OpenWindow.document.write( " var firstName_g            = '荣杰';\n" );
-OpenWindow.document.write( " var emailAddress_g         = 'vivian2086@gmail.com'; \n" );
-OpenWindow.document.write( " var phoneNumber_g          = '85263531851';\n" );
-OpenWindow.document.write( " var governmentID_g         = 'TODO';\n" );
-OpenWindow.document.write( " */\n" );
 OpenWindow.document.write( "\n" );
 OpenWindow.document.write( "\n" );
 OpenWindow.document.write( "var selectedStore_g         = null;\n" );
@@ -545,8 +552,8 @@ OpenWindow.document.write( "        console.log( '手机型号错误: ' + color_
 OpenWindow.document.write( "        return;\n" );
 OpenWindow.document.write( "    }\n" );
 OpenWindow.document.write( "    \n" );
-OpenWindow.document.write( "    //尝试一百次\n" );
-OpenWindow.document.write( "    for( k=0; k<100; k++ ){\n" );
+OpenWindow.document.write( "    //尝试2次\n" );
+OpenWindow.document.write( "    for( k=0; k<2; k++ ){\n" );
 OpenWindow.document.write( "	for( i=0; i<stores.length; i++ ){\n" );
 OpenWindow.document.write( "            console.log( skuName_g + ' : ' + stores[i].name );\n" );
 OpenWindow.document.write( "            sku = van_getsku( stores[i].num );\n" );
