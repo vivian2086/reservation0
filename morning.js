@@ -14,7 +14,7 @@ var governmentID_g         = '450881198703101839';
 //TODO
 var firstName_g             = '辽';
 var lastName_g              = '云';
-var emailAddress_g          = '8208354@qq.com'; 
+var emailAddress_g          = 'vivian2086@gmail.com';
 var phoneNumber_g           = '85263531851';
 var governmentID_g          = '420288199307081222';
 

@@ -9,9 +9,19 @@ var plan_g                  = "UNLOCKED";   //jQuery('.carrier-row').find(' inpu
 var selectedSubProduct_g    = 'iPhone 5s';
 var pickupMode_g            = 'POST_LAUNCH';
 
+//
+//var startime_g = 3;
+//currtime = (new Date).getTime();
+//startday = currtime - currtime % 43200000;
+//starthour = startday + startime_g * 3600000;
+//console.log( startday + ", " + startHour );
+//
+
+
 
 function van_getTimeslots() {
     var timeslots = [];
+
     var dataString = 'productName=' + selectedSubProduct_g + '&storeNumber=' + selectedStore_g +'&plan='+ plan_g + '&mode=' + pickupMode_g;
 
     jQuery.ajax({
@@ -102,6 +112,7 @@ function van_get_timeslot()
     }
     
 
+
     for( i=0; i<stores.length; i++ ){
         console.log( stores[i].name );
         selectedStore_g         = stores[i].num;
@@ -111,6 +122,11 @@ function van_get_timeslot()
 }
 
 van_get_timeslot();
+
+
+
+
+
 
 
 
