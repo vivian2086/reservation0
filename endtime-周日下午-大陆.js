@@ -146,8 +146,6 @@ function van_check_available( sku, partNum ) {
     
     jQuery.each(sku, function(product,productData) {
         jQuery.each(productData, function(color,colorData) {	
-            console.log( color );
-            
             jQuery.each(colorData, function(sTitle1,sTitle1Data) { 
                 jQuery.each(sTitle1Data, function(carrier,carrierData) { 
                     if( carrier.toLowerCase() == 'unlocked' ){

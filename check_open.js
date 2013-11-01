@@ -1,18 +1,17 @@
 
 var pickup_city_g = '香港';
+//var pickup_city_g = '北京';
 var selectedSubProduct_g    = 'iPhone 5s';
 
 
 
 
-function van_check_open( sku, partNum ) {
+function van_check_open( sku ) {
     
     var partNum_enabled = false;
     
     jQuery.each(sku, function(product,productData) {
         jQuery.each(productData, function(color,colorData) {	
-            console.log( color );
-            
             jQuery.each(colorData, function(sTitle1,sTitle1Data) { 
                 jQuery.each(sTitle1Data, function(carrier,carrierData) { 
                     if( carrier.toLowerCase() == 'unlocked' ){
@@ -20,7 +19,8 @@ function van_check_open( sku, partNum ) {
                             jQuery.each(capacityData, function(index,skuData) {
 				if (index === 0) {
                                     if( skuData.enabled ){
-                                            partNum_enabled = true;
+                                            //console.log( skuData.localizedAttributes.S_SKU_NAME );
+					    partNum_enabled = true;
                                             return false;
                                     }
                                 }
@@ -140,7 +140,7 @@ function van_get_iphone()
             console.log( "(2) " + Date() );
 	    console.log( "\n\n" );
 	    if( sku != null ){
-		if( van_check_open( sku, partNumber_g ) == true ){                
+		if( van_check_open( sku ) == true ){                
                     console.log( "open" );
 		    return;
 		}
