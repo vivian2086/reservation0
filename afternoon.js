@@ -1,7 +1,7 @@
 
 //TODO
-var timeslotid_g            = '656935';                //val.timeslotID.    oct-29, ifc
-var timeSlotStartTime_g     = '1383073200000';         //val.startTime
+var timeslotid_g            = '657318';                //val.timeslotID.    oct-30, ifc
+var timeSlotStartTime_g     = '1383159600000';         //val.startTime
 var pickUpSlot_g            = '7:00 下午 - 8:00 下午';  //val.formattedTimeForDisplay
 
 
