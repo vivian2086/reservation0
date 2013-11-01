@@ -9,7 +9,7 @@ var startime_g              = 3;            //取机时间，下午的时间，�
 var firstName_g            = '荣杰';
 var lastName_g             = '黄';
 var emailAddress_g         = 'vivian2086@gmail.com'; 
-var phoneNumber_g          = '85263531851';
+var phoneNumber_g          = '85290626306';
 var governmentID_g         = 'TODO';
 */
 
@@ -17,7 +17,7 @@ var governmentID_g         = 'TODO';
 var firstName_g             = '辽';
 var lastName_g              = '云';
 var emailAddress_g          = '8208354@qq.com'; 
-var phoneNumber_g           = '18666911953';
+var phoneNumber_g           = '85290626306';
 var governmentID_g          = '420288199307081222';
 
 

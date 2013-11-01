@@ -1,12 +1,4 @@
 
-/*
- var lastName_g             = '黄';
- var firstName_g            = '荣杰';
- var emailAddress_g         = 'vivian2086@gmail.com'; 
- var phoneNumber_g          = '85263531851';
- var governmentID_g         = 'TODO';
- */
-
 
 var selectedStore_g         = null;
 var storeName_g             = null;
@@ -240,11 +232,6 @@ function van_get_iphone()
         { "city":"上海", "store":[ {"num":"R389", "name":"上海, 浦东"}, {"num":"R359", "name":"上海, 南京东路"}, {"num":"R390", "name":"上海, 香港广场"} ]},
         { "city":"深圳", "store":[ {"num":"R484", "name":"深圳, 深圳益田假日广场"} ]},
         { "city":"成都", "store":[ {"num":"R502", "name":"成都, 成都万象城"} ]}
-        //
-        //    { "city":"北京", "store":[ "R388", "R320", "R448" ] },
-        //    { "city":"上海", "store":[ "R389", "R359", "R390" ] },
-        //    { "city":"深圳", "store":[ "R484" ] },
-        //    { "city":"成都", "store":[ "R502" ] }
     ];
     
     var models = [ 
@@ -308,11 +295,13 @@ function van_get_iphone()
         return;
     }
     
-    //尝试一百次
-    for( k=0; k<100; k++ ){
+    //尝试3次
+    for( k=0; k<3; k++ ){
 	for( i=0; i<stores.length; i++ ){
-            console.log( skuName_g + ' : ' + stores[i].name );
-            sku = van_getsku( stores[i].num );
+            console.log( "(1) " + Date() +  ", " +  stores[i].name );
+	    sku = van_getsku( stores[i].num );
+	    console.log( "(2) " + Date() );
+	    console.log( "\n\n" );
             if( sku != null ){
 		if( van_check_available( sku, partNumber_g ) == true ){                
                     selectedStore_g         = stores[i].num;
