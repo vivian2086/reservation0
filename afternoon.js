@@ -1,7 +1,7 @@
 
 //TODO
-var timeslotid_g            = '656935';                //val.timeslotID.    oct-29, ifc
-var timeSlotStartTime_g     = '1383073200000';         //val.startTime
+var timeslotid_g            = '657318';                //val.timeslotID.    oct-30, ifc
+var timeSlotStartTime_g     = '1383159600000';         //val.startTime
 var pickUpSlot_g            = '7:00 下午 - 8:00 下午';  //val.formattedTimeForDisplay
 
 
@@ -9,7 +9,7 @@ var pickUpSlot_g            = '7:00 下午 - 8:00 下午';  //val.formattedTimeF
 var firstName_g             = '辽';
 var lastName_g              = '云';
 var emailAddress_g          = 'vivian2086@gmail.com'; 
-var phoneNumber_g           = '85263531851';
+var phoneNumber_g           = '85290626306';
 var governmentID_g          = '420288199307081222';
 
 
@@ -18,7 +18,7 @@ var governmentID_g          = '420288199307081222';
 // var firstName_g            = '荣杰';
 // var lastName_g             = '黄';
 // var emailAddress_g         = 'vivian2086@gmail.com'; 
-// var phoneNumber_g          = '85263531851';
+// var phoneNumber_g          = '85290626306';
 // var governmentID_g         = '450881198703101839';
 var selectedStore_g         = 'R428';
 var storeName_g             = '香港, ifc mall';
@@ -85,7 +85,8 @@ function van_onSubmitRequest() {
 }
 
 //TODO
+console.log( "(1) " + Date() );
 van_onSubmitRequest();
-
+console.log( "(2) " + Date() );
 
 

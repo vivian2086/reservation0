@@ -3,21 +3,21 @@
 var startime_g              = 4;            //取机时间，下午的时间，例如, 4既是"4:00 下午 - x:00 下午"
 
 
-/*
+
 var firstName_g            = '荣杰';
 var lastName_g             = '黄';
 var emailAddress_g         = 'vivian2086@gmail.com'; 
-var phoneNumber_g          = '85263531851';
+var phoneNumber_g          = '85290626306';
 var governmentID_g         = '450881198703101839';
-*/
+
 
 //TODO
-var firstName_g             = '辽';
-var lastName_g              = '云';
-var emailAddress_g          = 'vivian2086@gmail.com';
-var phoneNumber_g           = '85263531851';
-var governmentID_g          = '420288199307081222';
-
+//var firstName_g             = '辽';
+//var lastName_g              = '云';
+//var emailAddress_g          = 'vivian2086@gmail.com';
+//var phoneNumber_g           = '85290626306';
+//var governmentID_g          = '420288199307081222';
+//
 
 
 var selectedStore_g         = 'R428';
@@ -137,7 +137,9 @@ function van_onSubmitRequest() {
 
 
 van_getTimeslots();
+
+console.log( "(1) " + Date() );
 //TODO
 van_onSubmitRequest();
-
+console.log( "(2) " + Date() );
 

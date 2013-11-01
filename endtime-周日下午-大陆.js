@@ -3,12 +3,12 @@
 var lastName_g = '黄';
 var firstName_g = '荣杰';
 var emailAddress_g = 'vivian2086@gmail.com';
-var phoneNumber_g = '85290626306';
+var phoneNumber_g = '18818651653';
 var governmentID_g = '450881198703101839';
 var color_g = '金';
 var capacity_g = '16';
-var carrier_g = '香港';
-var pickup_city_g = '香港';
+var carrier_g = '联通';
+var pickup_city_g = '北京';
 var endtime_g = 9;
 
 
