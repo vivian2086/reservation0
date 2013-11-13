@@ -1,0 +1,247 @@
+　　<html>
+    　　<head>
+        <TITLE>请填完该表，生成iPad mini预约代码</TITLE>
+        　　</head>
+    　　<body>
+
+
+        <div align="center">
+            
+            <form>
+                <input id="silver" type="radio" name="color" value="银">银色<br>
+                <input id="gray" type="radio" name="color" value="灰">灰色<br>
+                            
+                            <hr>
+                            
+                            
+                            <input id="small" type="radio" name="capacity" value="16" checked>16GB<br>
+                                <input id="mid" type="radio" name="capacity" value="32">32GB<br>
+                                    <input id="big" type="radio" name="capacity" value="64">64GB<br>
+                                        <input id="huge" type="radio" name="capacity" value="128">128GB<br>
+                                        
+                            <hr>
+                                        
+                                        
+                                        <input id="hk" type="radio" class="city" name="city" onclick="city_change()" value="香港" checked>香港<br>
+                                        <input id="bj" type="radio"  class="city" name="city" onclick="city_change()" value="北京">北京<br>
+                                        <input id="sh" type="radio"  class="city" name="city" onclick="city_change()" value="上海">上海<br>
+                                        <input id="sz" type="radio"  class="city" name="city" onclick="city_change()" value="深圳">深圳<br>
+                                        <input id="cd" type="radio" class="city"  name="city" onclick="city_change()" value="成都">成都<br>
+                                                            
+                                        <hr>
+                                        <form>
+                                            <input id="wifi" type="radio" class="carrier" name="carrier" onclick="carrier_change()" value="wifi" checked>WIFI<br>
+                                                <input id="cell" type="radio"  class="carrier" name="carrier" onclick="carrier_change()" value="cell">WIFI + 移动网络<br>
+                                        </form>
+                                        <hr>
+                                                            </strong>取机时间: <strong>
+                                                                <select id="pickup_time">
+                                                                    <option value="9">9:00 上午 - 10:00 上午</option>
+                                                                    <option value="10">10:00 上午 - 11:00 上午</option>
+                                                                    <option value="11">11:00 上午 - 12:00 下午</option>
+                                                                    <option value="12">12:00 下午 - 1:00 下午</option>
+                                                                  <option value="13">1:00 下午 - 2:00 下午</option>
+                                                                  <option value="14">2:00 下午 - 3:00 下午</option>
+                                                                    <option value="15" selected>3:00 下午 - 4:00 下午</option>
+                                                                    <option value="16">4:00 下午 - 5:00 下午</option>
+                                                                    <option value="17">5:00 下午 - 6:00 下午</option>
+                                                                    <option value="18">6:00 下午 - 7:00 下午</option>
+                                                                    <option value="19">7:00 下午 - 8:00 下午</option>
+                                                                    <option value="20">8:00 下午 - 9:00 下午</option>                                                                    
+                                                                </select>
+                                                                <hr>
+                                                                
+                                                                
+                                                                <h3>个人信息:</h3>
+                                                                <table><tbody>
+                                                                    <tr>
+                                                                        <td>姓:</td><td><input id="lastname" type="text" name="lastname"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>名:</td><td><input id="firstname"  type="text" name="firstname"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>email: </td><td><input  id="email" type="text" name="email"></td>
+                                                                        <tr>
+                                                                            <td>电话: </td><td><input  id="phone" type="text" name="phone"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>身份证: </td><td><input  id="govid" type="text" name="govid"></td>
+                                                                        </tr>
+                                                                        </tbody></table>
+                                                                
+                                                                
+                                                                <hr>
+                                                                <br>
+                                                                　　<input type="button" onclick="openwin()" value="生成iPad mini预定脚本">
+                                                                    </div>
+        <table><tbody>
+            <tr><td>
+                
+                <a href="https://ireservea.apple.com/HK/zh_HK/reserve/iPad" target="_blank">香港ipad mini预约</a>
+            </td></tr>
+            <tr><td>
+                <a href="https://ireservea.apple.com/CN/zh_CN/reserve/iPad" target="_blank">大陆ipad mini预约</a>
+            </td></tr>
+            <tr><td>
+                <a href="http://wwp.greenwichmeantime.com/time-zone/asia/china/" target="_blank">北京时间(参考)</a>
+            </td></tr>
+        </tbody></table>
+        
+
+
+        
+        　　</body>
+    
+    　　<SCRIPT LANGUAGE="javascript">
+        
+        var city = null;
+        var carrier = null;
+        var capacity = null;
+        var pickup_time = null;
+        var color = null;
+        var firstname = null;
+        var lastname = null;
+        var email = null
+        var phone = null;
+        var govid = null;
+        
+    function city_change(){
+            if( check_radio( "city" ) == "香港" ){
+                document.getElementById("cell").disabled=false;
+                
+            }else{
+                document.getElementById("wifi").checked=true;
+                document.getElementById("cell").disabled=true;
+            }
+        }
+    
+	
+	function carrier_change(){
+		if( check_radio( "carrier" ) == "cell" ){
+			document.getElementById("hk").checked=true;
+		}
+	}
+
+        
+	function check_radio( radioname ){
+            var radio_item = document.getElementsByName(radioname);
+            for (var i=0; i<radio_item.length; i++)
+            {
+                if(radio_item[i].checked){
+                    return radio_item[i].value;
+                }
+            }
+            return null;
+        }
+        
+        function check_combbox( id ){
+            var items = document.getElementById(id);
+            for (var i=0; i<items.length; i++)
+            {
+                if( items[i].selected ){
+                    return items[i].value;
+                }
+            }
+            return null;
+        }
+
+       
+        function check_all_entries(){
+            if( (color = check_radio( "color" )) == null ){
+                alert( "请选择颜色" );
+               return false;
+            }
+            if( (capacity = check_radio( "capacity" )) == null ){
+                alert( "请选择容量" );
+                return false;
+            }
+            if( (city = check_radio( "city" )) == null ){
+                alert( "请选择城市" );
+                return false;
+            }
+            if( (carrier = check_radio( "carrier" )) == null ){
+                alert( "请选择运营商" );
+                return false;
+            }
+            if( carrier == "wifi" ){
+                if( city == "香港" ){
+                    carrier = "wifi-hk";
+                }else{
+                    carrier = "wifi-ml";
+                }
+            }
+            if( (pickup_time = check_combbox( "pickup_time" )) == null ){
+                alert( "请选择取机时间" );
+                return false;
+            }
+            if( (firstname = document.getElementById( "firstname" ).value) == null ){
+                alert( "请填写姓名" );
+                return false;
+            }
+            if( (lastname = document.getElementById( "lastname" ).value) == null ){
+                alert( "请填写姓名" );
+                return false;
+            }
+            alert
+
+            if( (email = document.getElementById( "email" ).value) == null ){
+                alert( "请填写email" );
+                return false;
+            }
+
+            if( (phone = document.getElementById( "phone" ).value) == null ){
+                alert( "请填写手机号" );
+                return false;
+            }
+            if( (govid = document.getElementById( "govid" ).value) == null ){
+                alert( "请填写身份证号" );
+                return false;
+            }
+
+        }
+        
+        function openwin(){
+            if( check_all_entries() == false )
+                return;
+           
+            //生成
+            OpenWindow=window.open("", "newwin", "height=600, width=800,toolbar=no,scrollbars="+scroll+",menubar=no");
+            　　OpenWindow.document.write("<TITLE>iPad mini预约代码</TITLE>");
+        
+            　　//OpenWindow.document.write( "<textarea style=\"font-size:14px\" readonly=\"readonly\" rows=\"60\" cols=\"105\">" );
+                OpenWindow.document.write( "<textarea readonly=\"readonly\" rows=\"40\" cols=\"109\">" );
+            　　OpenWindow.document.write( "var lastName_g = '" + lastname + "';\n" );
+            　　OpenWindow.document.write( "var firstName_g = '" + firstname + "';\n"  );
+            　　OpenWindow.document.write( "var emailAddress_g = '" + email  + "';\n" );
+            　　OpenWindow.document.write( "var phoneNumber_g = '" + phone  + "';\n" );
+            　　OpenWindow.document.write( "var governmentID_g = '" + govid  + "';\n" );
+            　　OpenWindow.document.write( "var color_g = '" + color + "';\n"  );
+            　　OpenWindow.document.write( "var capacity_g = '" + capacity  + "';\n" );
+            　　OpenWindow.document.write( "var carrier_g = '" + carrier + "';\n"  );
+            　　OpenWindow.document.write( "var pickup_city_g = '" + city  + "';\n" );
+            　　OpenWindow.document.write( "var startime_g = " + pickup_time  + ";\n" );
+            write_file();
+
+            　　OpenWindow.document.write( "</textarea>" );
+
+            　　OpenWindow.document.write("</BODY>");
+            　　OpenWindow.document.write("</HTML>");
+            　　OpenWindow.document.close();
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        //不要更改函数的位置，它必须在最后，用于bash处理。bash处理过程是先计算出这行，然后输出这行之前的所有内容，
+         //接着读入一个文件填充该函数，最后输出一行 "}\< /SCRIPT></html>" 结束
+        function write_file(){
+
+}</SCRIPT></html>
+
+
+

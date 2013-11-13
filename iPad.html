@@ -1,0 +1,575 @@
+　　<html>
+    　　<head>
+        <TITLE>请填完该表，生成iPad mini预约代码</TITLE>
+        　　</head>
+    　　<body>
+
+
+        <div align="center">
+            
+            <form>
+                <input id="silver" type="radio" name="color" value="银">银色<br>
+                <input id="gray" type="radio" name="color" value="灰">灰色<br>
+                            
+                            <hr>
+                            
+                            
+                            <input id="small" type="radio" name="capacity" value="16" checked>16GB<br>
+                                <input id="mid" type="radio" name="capacity" value="32">32GB<br>
+                                    <input id="big" type="radio" name="capacity" value="64">64GB<br>
+                                        <input id="huge" type="radio" name="capacity" value="128">128GB<br>
+                                        
+                            <hr>
+                                        
+                                        
+                                        <input id="hk" type="radio" class="city" name="city" onclick="city_change()" value="香港" checked>香港<br>
+                                        <input id="bj" type="radio"  class="city" name="city" onclick="city_change()" value="北京">北京<br>
+                                        <input id="sh" type="radio"  class="city" name="city" onclick="city_change()" value="上海">上海<br>
+                                        <input id="sz" type="radio"  class="city" name="city" onclick="city_change()" value="深圳">深圳<br>
+                                        <input id="cd" type="radio" class="city"  name="city" onclick="city_change()" value="成都">成都<br>
+                                                            
+                                        <hr>
+                                        <form>
+                                            <input id="wifi" type="radio" class="carrier" name="carrier" onclick="carrier_change()" value="wifi" checked>WIFI<br>
+                                                <input id="cell" type="radio"  class="carrier" name="carrier" onclick="carrier_change()" value="cell">WIFI + 移动网络<br>
+                                        </form>
+                                        <hr>
+                                                            </strong>取机时间: <strong>
+                                                                <select id="pickup_time">
+                                                                    <option value="9">9:00 上午 - 10:00 上午</option>
+                                                                    <option value="10">10:00 上午 - 11:00 上午</option>
+                                                                    <option value="11">11:00 上午 - 12:00 下午</option>
+                                                                    <option value="12">12:00 下午 - 1:00 下午</option>
+                                                                  <option value="13">1:00 下午 - 2:00 下午</option>
+                                                                  <option value="14">2:00 下午 - 3:00 下午</option>
+                                                                    <option value="15" selected>3:00 下午 - 4:00 下午</option>
+                                                                    <option value="16">4:00 下午 - 5:00 下午</option>
+                                                                    <option value="17">5:00 下午 - 6:00 下午</option>
+                                                                    <option value="18">6:00 下午 - 7:00 下午</option>
+                                                                    <option value="19">7:00 下午 - 8:00 下午</option>
+                                                                    <option value="20">8:00 下午 - 9:00 下午</option>                                                                    
+                                                                </select>
+                                                                <hr>
+                                                                
+                                                                
+                                                                <h3>个人信息:</h3>
+                                                                <table><tbody>
+                                                                    <tr>
+                                                                        <td>姓:</td><td><input id="lastname" type="text" name="lastname"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>名:</td><td><input id="firstname"  type="text" name="firstname"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>email: </td><td><input  id="email" type="text" name="email"></td>
+                                                                        <tr>
+                                                                            <td>电话: </td><td><input  id="phone" type="text" name="phone"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>身份证: </td><td><input  id="govid" type="text" name="govid"></td>
+                                                                        </tr>
+                                                                        </tbody></table>
+                                                                
+                                                                
+                                                                <hr>
+                                                                <br>
+                                                                　　<input type="button" onclick="openwin()" value="生成iPad mini预定脚本">
+                                                                    </div>
+        <table><tbody>
+            <tr><td>
+                
+                <a href="https://ireservea.apple.com/HK/zh_HK/reserve/iPad" target="_blank">香港ipad mini预约</a>
+            </td></tr>
+            <tr><td>
+                <a href="https://ireservea.apple.com/CN/zh_CN/reserve/iPad" target="_blank">大陆ipad mini预约</a>
+            </td></tr>
+            <tr><td>
+                <a href="http://wwp.greenwichmeantime.com/time-zone/asia/china/" target="_blank">北京时间(参考)</a>
+            </td></tr>
+        </tbody></table>
+        
+
+
+        
+        　　</body>
+    
+    　　<SCRIPT LANGUAGE="javascript">
+        
+        var city = null;
+        var carrier = null;
+        var capacity = null;
+        var pickup_time = null;
+        var color = null;
+        var firstname = null;
+        var lastname = null;
+        var email = null
+        var phone = null;
+        var govid = null;
+        
+    function city_change(){
+            if( check_radio( "city" ) == "香港" ){
+                document.getElementById("cell").disabled=false;
+                
+            }else{
+                document.getElementById("wifi").checked=true;
+                document.getElementById("cell").disabled=true;
+            }
+        }
+    
+	
+	function carrier_change(){
+		if( check_radio( "carrier" ) == "cell" ){
+			document.getElementById("hk").checked=true;
+		}
+	}
+
+        
+	function check_radio( radioname ){
+            var radio_item = document.getElementsByName(radioname);
+            for (var i=0; i<radio_item.length; i++)
+            {
+                if(radio_item[i].checked){
+                    return radio_item[i].value;
+                }
+            }
+            return null;
+        }
+        
+        function check_combbox( id ){
+            var items = document.getElementById(id);
+            for (var i=0; i<items.length; i++)
+            {
+                if( items[i].selected ){
+                    return items[i].value;
+                }
+            }
+            return null;
+        }
+
+       
+        function check_all_entries(){
+            if( (color = check_radio( "color" )) == null ){
+                alert( "请选择颜色" );
+               return false;
+            }
+            if( (capacity = check_radio( "capacity" )) == null ){
+                alert( "请选择容量" );
+                return false;
+            }
+            if( (city = check_radio( "city" )) == null ){
+                alert( "请选择城市" );
+                return false;
+            }
+            if( (carrier = check_radio( "carrier" )) == null ){
+                alert( "请选择运营商" );
+                return false;
+            }
+            if( carrier == "wifi" ){
+                if( city == "香港" ){
+                    carrier = "wifi-hk";
+                }else{
+                    carrier = "wifi-ml";
+                }
+            }
+            if( (pickup_time = check_combbox( "pickup_time" )) == null ){
+                alert( "请选择取机时间" );
+                return false;
+            }
+            if( (firstname = document.getElementById( "firstname" ).value) == null ){
+                alert( "请填写姓名" );
+                return false;
+            }
+            if( (lastname = document.getElementById( "lastname" ).value) == null ){
+                alert( "请填写姓名" );
+                return false;
+            }
+            alert
+
+            if( (email = document.getElementById( "email" ).value) == null ){
+                alert( "请填写email" );
+                return false;
+            }
+
+            if( (phone = document.getElementById( "phone" ).value) == null ){
+                alert( "请填写手机号" );
+                return false;
+            }
+            if( (govid = document.getElementById( "govid" ).value) == null ){
+                alert( "请填写身份证号" );
+                return false;
+            }
+
+        }
+        
+        function openwin(){
+            if( check_all_entries() == false )
+                return;
+           
+            //生成
+            OpenWindow=window.open("", "newwin", "height=600, width=800,toolbar=no,scrollbars="+scroll+",menubar=no");
+            　　OpenWindow.document.write("<TITLE>iPad mini预约代码</TITLE>");
+        
+            　　//OpenWindow.document.write( "<textarea style=\"font-size:14px\" readonly=\"readonly\" rows=\"60\" cols=\"105\">" );
+                OpenWindow.document.write( "<textarea readonly=\"readonly\" rows=\"40\" cols=\"109\">" );
+            　　OpenWindow.document.write( "var lastName_g = '" + lastname + "';\n" );
+            　　OpenWindow.document.write( "var firstName_g = '" + firstname + "';\n"  );
+            　　OpenWindow.document.write( "var emailAddress_g = '" + email  + "';\n" );
+            　　OpenWindow.document.write( "var phoneNumber_g = '" + phone  + "';\n" );
+            　　OpenWindow.document.write( "var governmentID_g = '" + govid  + "';\n" );
+            　　OpenWindow.document.write( "var color_g = '" + color + "';\n"  );
+            　　OpenWindow.document.write( "var capacity_g = '" + capacity  + "';\n" );
+            　　OpenWindow.document.write( "var carrier_g = '" + carrier + "';\n"  );
+            　　OpenWindow.document.write( "var pickup_city_g = '" + city  + "';\n" );
+            　　OpenWindow.document.write( "var startime_g = " + pickup_time  + ";\n" );
+            write_file();
+
+            　　OpenWindow.document.write( "</textarea>" );
+
+            　　OpenWindow.document.write("</BODY>");
+            　　OpenWindow.document.write("</HTML>");
+            　　OpenWindow.document.close();
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        //不要更改函数的位置，它必须在最后，用于bash处理。bash处理过程是先计算出这行，然后输出这行之前的所有内容，
+         //接着读入一个文件填充该函数，最后输出一行 "}\< /SCRIPT></html>" 结束
+        function write_file(){
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "var selectedStore_g         = null;\n" );
+OpenWindow.document.write( "var storeName_g             = null;\n" );
+OpenWindow.document.write( "var partNumber_g            = null;\n" );
+OpenWindow.document.write( "var skuName_g               = null;\n" );
+OpenWindow.document.write( "var timeslotid_g            = null;\n" );
+OpenWindow.document.write( "var timeSlotStartTime_g     = null;         //jQuery('#hiddenTimeSlot').val().split(',')[2];\n" );
+OpenWindow.document.write( "var pickUpSlot_g            = null;         //jQuery('.step-seven .selection').html()\n" );
+OpenWindow.document.write( "var plan_g                  = \"UNLOCKED\";   //jQuery('.carrier-row').find(' input ').val();     \n" );
+OpenWindow.document.write( "var selectedSubProduct_g    = 'iPad mini with Retina display';\n" );
+OpenWindow.document.write( "var pickupMode_g            = 'POST_LAUNCH';\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "function van_getTimeslots() {\n" );
+OpenWindow.document.write( "    var timeslots = [];\n" );
+OpenWindow.document.write( "    var startime_tmp = null;\n" );
+OpenWindow.document.write( "	var dataString = 'productName=' + selectedSubProduct_g + '&storeNumber=' + selectedStore_g +'&plan='+ plan_g + '&mode=' + pickupMode_g;\n" );
+OpenWindow.document.write( "    var i = 0;\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    console.log( '<2>. 计算取机时间...' );\n" );
+OpenWindow.document.write( "    jQuery.ajax({\n" );
+OpenWindow.document.write( "                type: \"POST\",\n" );
+OpenWindow.document.write( "                async: false,\n" );
+OpenWindow.document.write( "                url: \"getTimeSlots\",\n" );
+OpenWindow.document.write( "                dataType : \"json\",\n" );
+OpenWindow.document.write( "                data: dataString,\n" );
+OpenWindow.document.write( "                success: function(data) {\n" );
+OpenWindow.document.write( "                if (data.timeSlots != null) {\n" );
+OpenWindow.document.write( "                \n" );
+OpenWindow.document.write( "                console.log( \"POST(gettimeslots) success1\" );\n" );
+OpenWindow.document.write( "                timeslots = data.timeSlots;	\n" );
+OpenWindow.document.write( "                for( i = startime_g; i < 24 && timeslotid_g == null; i++ ){\n" );
+OpenWindow.document.write( "                \n" );
+OpenWindow.document.write( "                if( i < 12 )\n" );
+OpenWindow.document.write( "                    startime_tmp = i + ':00 上午';\n" );
+OpenWindow.document.write( "                else if( i == 12 )\n" );
+OpenWindow.document.write( "                    startime_tmp = '12:00 下午';\n" );
+OpenWindow.document.write( "                else\n" );
+OpenWindow.document.write( "                    startime_tmp = i%12 + ':00 下午';\n" );
+OpenWindow.document.write( "                \n" );
+OpenWindow.document.write( "                jQuery.each(timeslots, function(index, val) {\n" );
+OpenWindow.document.write( "                            console.log( \"      \" + val.formattedTimeForDisplay + \": \" + val.timeslotID + ', '  + val.startTime );\n" );
+OpenWindow.document.write( "                            \n" );
+OpenWindow.document.write( "                            if( val.formattedTimeForDisplay.split(' - ')[0] == startime_tmp ){\n" );
+OpenWindow.document.write( "                            timeSlotStartTime_g = val.startTime;\n" );
+OpenWindow.document.write( "                            timeslotid_g = val.timeslotID;\n" );
+OpenWindow.document.write( "                            pickUpSlot_g = val.formattedTimeForDisplay;\n" );
+OpenWindow.document.write( "                            \n" );
+OpenWindow.document.write( "                            console.log( \"              确定取机时间. \" + pickUpSlot_g + \": \" + timeslotid_g + ', ' + timeSlotStartTime_g + ', available:' + val.reservationAvailable );\n" );
+OpenWindow.document.write( "                            return false;\n" );
+OpenWindow.document.write( "                            } \n" );
+OpenWindow.document.write( "                            });\n" );
+OpenWindow.document.write( "                \n" );
+OpenWindow.document.write( "                }//for\n" );
+OpenWindow.document.write( "                } \n" );
+OpenWindow.document.write( "                console.log( \"POST(gettimeslots) success2\" );\n" );
+OpenWindow.document.write( "                },\n" );
+OpenWindow.document.write( "                error: function () {\n" );
+OpenWindow.document.write( "                console.log( \"POST(getTimeSlots) error\" );\n" );
+OpenWindow.document.write( "                } 		\n" );
+OpenWindow.document.write( "                \n" );
+OpenWindow.document.write( "                \n" );
+OpenWindow.document.write( "                });\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    if( timeslotid_g == null )\n" );
+OpenWindow.document.write( "        return false;\n" );
+OpenWindow.document.write( "    else\n" );
+OpenWindow.document.write( "        return true;\n" );
+OpenWindow.document.write( "}\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "function van_onSubmitRequest() {\n" );
+OpenWindow.document.write( "    var quantity        = 1;                           //parseInt(jQuery('.step-five .selection').html());\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    var dataString = {emailAddress:emailAddress_g, firstName:firstName_g, lastName:lastName_g, phoneNumber:phoneNumber_g, storeNumber:selectedStore_g, partNumber:partNumber_g, pickUpMode:pickupMode_g, timeSlotId:timeslotid_g, plan:plan_g, productName:selectedSubProduct_g, quantity:quantity, govtID:governmentID_g, startTime:timeSlotStartTime_g, skuName:skuName_g, pickUpSlot:pickUpSlot_g};\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    console.log( '<3>. 提交订单...' );\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "    jQuery.ajax({\n" );
+OpenWindow.document.write( "                type : \"POST\",\n" );
+OpenWindow.document.write( "                url : \"createPickUp\",\n" );
+OpenWindow.document.write( "                dataType : \"json\",\n" );
+OpenWindow.document.write( "                contentType: \"application/json\",\n" );
+OpenWindow.document.write( "                data : JSON.stringify(dataString)\n" );
+OpenWindow.document.write( "                }).done(function(data){\n" );
+OpenWindow.document.write( "                        if (data != null) {\n" );
+OpenWindow.document.write( "                        if (data.isError) {\n" );
+OpenWindow.document.write( "                        if(data.loginRedirectUrl) {\n" );
+OpenWindow.document.write( "                        window.location = data.loginRedirectUrl;\n" );
+OpenWindow.document.write( "                        console.log( \"POST(createPickUp) error1: loginRedirectUrl\" );\n" );
+OpenWindow.document.write( "                        } else {\n" );
+OpenWindow.document.write( "                        console.log( \"POST(createPickUp) error2: \" + data.errorMessage );\n" );
+OpenWindow.document.write( "                        jQuery(\"#error\").show();\n" );
+OpenWindow.document.write( "                        jQuery(\"#errorMessage\").parent().show();\n" );
+OpenWindow.document.write( "                        jQuery(\"#errorMessage\").text(data.errorMessage);\n" );
+OpenWindow.document.write( "                        jQuery(\"#errMessage\").hide();		\n" );
+OpenWindow.document.write( "                        jQuery(\"#errorMessage\").show();\n" );
+OpenWindow.document.write( "                        //Clear Captcha \n" );
+OpenWindow.document.write( "                        CaptchaProcess.getCaptcha();\n" );
+OpenWindow.document.write( "                        }\n" );
+OpenWindow.document.write( "                        } else {\n" );
+OpenWindow.document.write( "                        \n" );
+OpenWindow.document.write( "                        var stitle3 = null;\n" );
+OpenWindow.document.write( "                        stitle3 = \"HK$ 5,588\";\n" );
+OpenWindow.document.write( "                        \n" );
+OpenWindow.document.write( "                        console.log( \"POST(createPickUp) success\" );\n" );
+OpenWindow.document.write( "                        jQuery('#productName').val(quantity + \" \" + skuName_g);   //\n" );
+OpenWindow.document.write( "                        jQuery('#pickupMode').val(pickupMode_g);       //(pickupMode_g);  \n" );
+OpenWindow.document.write( "                        jQuery('#pickUpSlot').val(pickUpSlot_g);     //(jQuery('.step-seven .selection').html());\n" );
+OpenWindow.document.write( "                        jQuery('#storeName').val(storeName_g);        //(jQuery('.step-one .selection').html());\n" );
+OpenWindow.document.write( "                        jQuery('#pickupDateAndTimeText').val(data.pickupDateAndTimeText);\n" );
+OpenWindow.document.write( "                        jQuery('#storeMapUrl').val(data.storeMapUrl);\n" );
+OpenWindow.document.write( "                        jQuery('#tagName').val(location.href.split('/')[location.href.split('/').length - 2]);\n" );
+OpenWindow.document.write( "                        jQuery('#pickUpForm').submit();\n" );
+OpenWindow.document.write( "                        }\n" );
+OpenWindow.document.write( "                        }\n" );
+OpenWindow.document.write( "                        \n" );
+OpenWindow.document.write( "                        }).fail(function(jqXHR, textStatus, errorThrown) {\n" );
+OpenWindow.document.write( "                                console.log( \"POST(createPickUp) error3: fail\" );\n" );
+OpenWindow.document.write( "                                console.error(jqXHR, textStatus, errorThrown);\n" );
+OpenWindow.document.write( "                                //Clear Captcha \n" );
+OpenWindow.document.write( "                                CaptchaProcess.getCaptcha();\n" );
+OpenWindow.document.write( "                                }).always(function() {\n" );
+OpenWindow.document.write( "                                          });\n" );
+OpenWindow.document.write( "	\n" );
+OpenWindow.document.write( "}\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "function van_check_available( sku, partNum ) {\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    var partNum_enabled = false;\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    console.log( '<1>. 搜索该型号ipad...' );\n" );
+OpenWindow.document.write( "    jQuery.each(sku, function(product,productData) {\n" );
+OpenWindow.document.write( "        jQuery.each(productData, function(color,colorData) {	\n" );
+OpenWindow.document.write( "            jQuery.each(colorData, function(sTitle1,sTitle1Data) { \n" );
+OpenWindow.document.write( "                jQuery.each(sTitle1Data, function(carrier,carrierData) { \n" );
+OpenWindow.document.write( "                    if( carrier.toLowerCase() == 'unlocked' ){\n" );
+OpenWindow.document.write( "                        jQuery.each(carrierData, function(capacity,capacityData) {\n" );
+OpenWindow.document.write( "                            jQuery.each(capacityData, function(index,skuData) {\n" );
+OpenWindow.document.write( "				if (index === 0) {\n" );
+OpenWindow.document.write( "                                    if( skuData.partNumber == partNum ){\n" );
+OpenWindow.document.write( "                                        if( skuData.enabled ){\n" );
+OpenWindow.document.write( "                                            console.log( '    ' + partNum + ', ' + skuData.localizedAttributes.S_SKU_NAME + ': 找到' );\n" );
+OpenWindow.document.write( "                                            partNum_enabled = true;\n" );
+OpenWindow.document.write( "                                            return false;\n" );
+OpenWindow.document.write( "                                        }else{\n" );
+OpenWindow.document.write( "                                            console.log( '    ' + partNum + ', ' + skuData.localizedAttributes.S_SKU_NAME + ': 无货' );\n" );
+OpenWindow.document.write( "                                        }\n" );
+OpenWindow.document.write( "                                    }	\n" );
+OpenWindow.document.write( "                                }\n" );
+OpenWindow.document.write( "                            });	\n" );
+OpenWindow.document.write( "                        });\n" );
+OpenWindow.document.write( "                    }\n" );
+OpenWindow.document.write( "		});	\n" );
+OpenWindow.document.write( "            });\n" );
+OpenWindow.document.write( "        });\n" );
+OpenWindow.document.write( "    });\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    return partNum_enabled;\n" );
+OpenWindow.document.write( "}\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "//向服务器请求某store的sku\n" );
+OpenWindow.document.write( "function van_getsku( storeNumber ) {\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    var sku = null;\n" );
+OpenWindow.document.write( "    var tag=location.href.split('/')[location.href.split('/').length-2];\n" );
+OpenWindow.document.write( "    var dataString = 'tag=' + tag + '&store=' + storeNumber + '&product=' + selectedSubProduct_g;\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    jQuery.ajax({\n" );
+OpenWindow.document.write( "        type: \"POST\",\n" );
+OpenWindow.document.write( "        async: false,\n" );
+OpenWindow.document.write( "        url: \"skusForStoreProduct\",\n" );
+OpenWindow.document.write( "        dataType : \"json\",\n" );
+OpenWindow.document.write( "        data: dataString,\n" );
+OpenWindow.document.write( "        success: function(data) {\n" );
+OpenWindow.document.write( "            if (data != null) {	\n" );
+OpenWindow.document.write( "                if (data.productResponse !== undefined) {\n" );
+OpenWindow.document.write( "                    sku = data.productResponse.productGroupedSku;\n" );
+OpenWindow.document.write( "                    console.log('POST(sku) success: ' + storeNumber );\n" );
+OpenWindow.document.write( "                } else {\n" );
+OpenWindow.document.write( "    		    console.log('POST(sku) No data:' + storeNumber );\n" );
+OpenWindow.document.write( "                }\n" );
+OpenWindow.document.write( "            } else {\n" );
+OpenWindow.document.write( "                console.log('POST(sku) data == NULL:' + storeNumber );\n" );
+OpenWindow.document.write( "            }\n" );
+OpenWindow.document.write( "        },\n" );
+OpenWindow.document.write( "        error: function (xhr, ajaxOptions, thrownError) {\n" );
+OpenWindow.document.write( "            console.log( \"POST(sku) err1\" );\n" );
+OpenWindow.document.write( "        } 		\n" );
+OpenWindow.document.write( "    }); \n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    return sku;\n" );
+OpenWindow.document.write( "};\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "// function van_gettime_submit(){\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "//     var i = 0;\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "//     van_getTimeslots();\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "//     (function doit() {\n" );
+OpenWindow.document.write( "//      setTimeout(function() {\n" );
+OpenWindow.document.write( "//                 if( timeslotid_g != null ){\n" );
+OpenWindow.document.write( "//                 van_onSubmitRequest();\n" );
+OpenWindow.document.write( "//                 }\n" );
+OpenWindow.document.write( "//                 if( i++ < 30 && timeslotid_g == null ) {\n" );
+OpenWindow.document.write( "//                 console.log( i );\n" );
+OpenWindow.document.write( "//                 van_getTimeslots();\n" );
+OpenWindow.document.write( "//                 doit();\n" );
+OpenWindow.document.write( "//                 }\n" );
+OpenWindow.document.write( "//                 }, 200 );\n" );
+OpenWindow.document.write( "//      })();\n" );
+OpenWindow.document.write( "// }\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "function van_get_apple()\n" );
+OpenWindow.document.write( "{\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    var i = 0;\n" );
+OpenWindow.document.write( "    var k = 0;\n" );
+OpenWindow.document.write( "    var sku     		= null;\n" );
+OpenWindow.document.write( "    var stores	    = null;\n" );
+OpenWindow.document.write( "    var stores_all = [ \n" );
+OpenWindow.document.write( "        { \"city\":\"香港\", \"store\":[ {\"num\":\"R428\", \"name\":\"香港, ifc mall\"}, {\"num\":\"R485\", \"name\":\"香港, Festival Walk\"}, {\"num\":\"R409\", \"name\":\"香港, Causeway Bay\"} ]},\n" );
+OpenWindow.document.write( "        { \"city\":\"北京\", \"store\":[ {\"num\":\"R320\", \"name\":\"北京市, 三里屯\"}, {\"num\":\"R448\", \"name\":\"北京市, 王府井\"}, {\"num\":\"R388\", \"name\":\"北京市, 西单大悦城\"} ]},\n" );
+OpenWindow.document.write( "        { \"city\":\"上海\", \"store\":[ {\"num\":\"R389\", \"name\":\"上海, 浦东\"}, {\"num\":\"R359\", \"name\":\"上海, 南京东路\"}, {\"num\":\"R390\", \"name\":\"上海, 香港广场\"} ]},\n" );
+OpenWindow.document.write( "        { \"city\":\"深圳\", \"store\":[ {\"num\":\"R484\", \"name\":\"深圳, 深圳益田假日广场\"} ]},\n" );
+OpenWindow.document.write( "        { \"city\":\"成都\", \"store\":[ {\"num\":\"R502\", \"name\":\"成都, 成都万象城\"} ]}\n" );
+OpenWindow.document.write( "    ];\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    var models = [\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"16\", \"carrier\":\"wifi-ml\", \"partNum\":\"ME279CH/A\", \"skuName\":\"配备 Retina 显示屏的 iPad mini WLAN 16GB 机型 - 银色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"16\", \"carrier\":\"wifi-hk\", \"partNum\":\"ME279ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi 16GB - 銀色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"16\", \"carrier\":\"cell\",    \"partNum\":\"ME814ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi + Cellular 16GB - 銀色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"32\", \"carrier\":\"wifi-ml\", \"partNum\":\"ME280CH/A\", \"skuName\":\"配备 Retina 显示屏的 iPad mini WLAN 32GB 机型 - 银色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"32\", \"carrier\":\"wifi-hk\", \"partNum\":\"ME280ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi 32GB - 銀色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"32\", \"carrier\":\"cell\",    \"partNum\":\"ME824ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi + Cellular 32GB - 銀色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"64\", \"carrier\":\"wifi-ml\", \"partNum\":\"ME281CH/A\", \"skuName\":\"配备 Retina 显示屏的 iPad mini WLAN 64GB 机型 - 银色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"64\", \"carrier\":\"wifi-hk\", \"partNum\":\"ME281ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi 64GB - 銀色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"64\", \"carrier\":\"cell\",    \"partNum\":\"ME832ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi + Cellular 64GB - 銀色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"128\", \"carrier\":\"wifi-ml\",\"partNum\":\"ME860CH/A\", \"skuName\":\"配备 Retina 显示屏的 iPad mini WLAN 128GB 机型 - 银色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"128\", \"carrier\":\"wifi-hk\",\"partNum\":\"ME860ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi 128GB - 銀色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"银\", \"capacity\":\"128\", \"carrier\":\"cell\",   \"partNum\":\"ME840ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi + Cellular 128GB - 銀色\" },\n" );
+OpenWindow.document.write( "		  { \"color\":\"灰\", \"capacity\":\"16\", \"carrier\":\"wifi-ml\", \"partNum\":\"ME276CH/A\", \"skuName\":\"配备 Retina 显示屏的 iPad mini WLAN 16GB 机型 - 深空灰色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"16\", \"carrier\":\"wifi-hk\", \"partNum\":\"ME276ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi 16GB - 太空灰\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"16\", \"carrier\":\"cell\",    \"partNum\":\"ME800ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi + Cellular 16GB - 太空灰\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"32\", \"carrier\":\"wifi-ml\", \"partNum\":\"ME277CH/A\", \"skuName\":\"配备 Retina 显示屏的 iPad mini WLAN 32GB 机型 - 深空灰色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"32\", \"carrier\":\"wifi-hk\", \"partNum\":\"ME277ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi 32GB - 太空灰\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"32\", \"carrier\":\"cell\",    \"partNum\":\"ME820ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi + Cellular 32GB - 太空灰\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"64\", \"carrier\":\"wifi-ml\", \"partNum\":\"ME278CH/A\", \"skuName\":\"配备 Retina 显示屏的 iPad mini WLAN 64GB 机型 - 深空灰色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"64\", \"carrier\":\"wifi-hk\", \"partNum\":\"ME278ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi 64GB - 太空灰\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"64\", \"carrier\":\"cell\",    \"partNum\":\"ME828ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi + Cellular 64GB - 太空灰\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"128\", \"carrier\":\"wifi-ml\",\"partNum\":\"ME856CH/A\", \"skuName\":\"配备 Retina 显示屏的 iPad mini WLAN 128GB 机型 - 深空灰色\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"128\", \"carrier\":\"wifi-hk\",\"partNum\":\"ME856ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi 128GB - 太空灰\" },\n" );
+OpenWindow.document.write( "                  { \"color\":\"灰\", \"capacity\":\"128\", \"carrier\":\"cell\",   \"partNum\":\"ME836ZP/A\", \"skuName\":\"iPad mini 配備 Retina 顯示器 Wi-Fi + Cellular 128GB - 太空灰\" },\n" );
+OpenWindow.document.write( "                  ];\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    //计算城市\n" );
+OpenWindow.document.write( "    jQuery.each(stores_all, function(index,cityData) {\n" );
+OpenWindow.document.write( "        if( cityData.city == pickup_city_g ){\n" );
+OpenWindow.document.write( "            stores = cityData.store;\n" );
+OpenWindow.document.write( "            return false;\n" );
+OpenWindow.document.write( "        }\n" );
+OpenWindow.document.write( "    });\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    if( stores == null ){\n" );
+OpenWindow.document.write( "        console.log( '城市名错误: ' + pickup_city_g );\n" );
+OpenWindow.document.write( "        return;\n" );
+OpenWindow.document.write( "    }\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    //计算型号\n" );
+OpenWindow.document.write( "    for( i=0; i<models.length; i++ ){\n" );
+OpenWindow.document.write( "        if( models[i].color == color_g &&\n" );
+OpenWindow.document.write( "            models[i].capacity == capacity_g &&\n" );
+OpenWindow.document.write( "            models[i].carrier == carrier_g ){\n" );
+OpenWindow.document.write( "            \n" );
+OpenWindow.document.write( "            partNumber_g = models[i].partNum;\n" );
+OpenWindow.document.write( "            skuName_g = models[i].skuName;\n" );
+OpenWindow.document.write( "            break;\n" );
+OpenWindow.document.write( "        }\n" );
+OpenWindow.document.write( "    }\n" );
+OpenWindow.document.write( "    if( partNumber_g == null || skuName_g == null ){\n" );
+OpenWindow.document.write( "        console.log( 'ipad型号错误: ' + color_g + ', ' + capacity_g + ', ' + carrier_g );\n" );
+OpenWindow.document.write( "        return;\n" );
+OpenWindow.document.write( "    }\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    //尝试3次\n" );
+OpenWindow.document.write( "    for( k=0; k<3; k++ ){\n" );
+OpenWindow.document.write( "	for( i=0; i<stores.length; i++ ){\n" );
+OpenWindow.document.write( "        console.log( Date() +  \", \" +  stores[i].name );\n" );
+OpenWindow.document.write( "	    sku = van_getsku( stores[i].num );\n" );
+OpenWindow.document.write( "	    console.log( Date() );\n" );
+OpenWindow.document.write( "        if( sku != null ){\n" );
+OpenWindow.document.write( "		if( van_check_available( sku, partNumber_g ) == true ){\n" );
+OpenWindow.document.write( "                    selectedStore_g         = stores[i].num;\n" );
+OpenWindow.document.write( "                    storeName_g             = stores[i].name;\n" );
+OpenWindow.document.write( "                    \n" );
+OpenWindow.document.write( "                    //获取timeslot，然后提交\n" );
+OpenWindow.document.write( "                    if( van_getTimeslots() == true ){\n" );
+OpenWindow.document.write( "			van_onSubmitRequest();\n" );
+OpenWindow.document.write( "			return;\n" );
+OpenWindow.document.write( "		    }\n" );
+OpenWindow.document.write( "		}\n" );
+OpenWindow.document.write( "            }\n" );
+OpenWindow.document.write( "        console.log( \" \" );\n" );
+OpenWindow.document.write( "	}\n" );
+OpenWindow.document.write( "    }\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "    if( sku != null )\n" );
+OpenWindow.document.write( "        console.log( \"预约失败: 该型号在该城市的所有直营店都没货.\" );\n" );
+OpenWindow.document.write( "    else\n" );
+OpenWindow.document.write( "        console.log( \"预约失败: 服务器无响应.\" );\n" );
+OpenWindow.document.write( "    \n" );
+OpenWindow.document.write( "}\n" );
+OpenWindow.document.write( "\n" );
+OpenWindow.document.write( "van_get_apple();\n" );
+OpenWindow.document.write( "\n" );
+}</SCRIPT></html>
