@@ -298,7 +298,6 @@ function van_get_iphone()
         console.log( "(1) " + Date() +  ", " +  stores[i].name );
 	    sku = van_getsku( stores[i].num );
 	    console.log( "(2) " + Date() );
-	    console.log( "\n\n" );
             if( sku != null ){
 		if( van_check_available( sku, partNumber_g ) == true ){                
                     selectedStore_g         = stores[i].num;

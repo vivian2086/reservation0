@@ -36,7 +36,7 @@ function van_getTimeslots() {
                 console.log( "POST(gettimeslots) success1" );
                 timeslots = data.timeSlots;	
                 jQuery.each(timeslots, function(index, val) {
-                    console.log( val.formattedTimeForDisplay + ": " + val.timeslotID + ', ' + val.timeslotDate+ ', ' + val.startTime );
+                    console.log( val.formattedTimeForDisplay + ": " + val.timeslotID + ', ' + val.startTime );
                     //console.log( val );
                 });
             }//if
